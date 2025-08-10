@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmdaubklcmmg3"]
+[gd_scene load_steps=14 format=3 uid="uid://cmdaubklcmmg3"]
 
-[ext_resource type="Script" uid="uid://cdxqcnyiar6j0" path="res://characters/scripts/playerScript.gd" id="1_3eadt"]
+[ext_resource type="Script" uid="uid://cdxqcnyiar6j0" path="res://scripts/player-scripts/playerMain.gd" id="1_3eadt"]
 [ext_resource type="Texture2D" uid="uid://g7nh1o8hvs6k" path="res://characters/sprites/ExamplePlayerSprite.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://2dewxob1rswy" path="res://scripts/player-scripts/playerMovement.gd" id="3_tory2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tory2"]
 
@@ -152,3 +153,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_n8jd0")
 }
 script = SubResource("GDScript_3eadt")
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("3_tory2")

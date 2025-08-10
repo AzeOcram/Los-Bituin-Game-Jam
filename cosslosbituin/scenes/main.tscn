@@ -1,15 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://csnoki48f70jq"]
+[gd_scene load_steps=4 format=3 uid="uid://csnoki48f70jq"]
 
-[ext_resource type="Script" uid="uid://b60oto2nfygbd" path="res://scenes/mainScript.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://b60oto2nfygbd" path="res://scripts/mainScript.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cmdaubklcmmg3" path="res://characters/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://sq2wqdg287go" path="res://scenes/puzzle.tscn" id="3_sugp2"]
 
 [node name="gameScene" type="Node2D"]
 script = ExtResource("1_0wfyh")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="map" type="ColorRect" parent="."]
 offset_right = 1152.0
-offset_bottom = 645.0
+offset_bottom = 632.0
 color = Color(0.16445, 0.0792645, 0.0220295, 1)
 
 [node name="player" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(524, 277)
+position = Vector2(464, 280)
+
+[node name="Minigames" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Puzzle" parent="Minigames" instance=ExtResource("3_sugp2")]
+visible = false
+offset_left = 256.0
+offset_top = 104.0
+offset_right = 256.0
+offset_bottom = 124.0

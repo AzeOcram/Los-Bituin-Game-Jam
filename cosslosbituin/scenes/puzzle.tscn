@@ -1,0 +1,202 @@
+[gd_scene load_steps=13 format=3 uid="uid://sq2wqdg287go"]
+
+[ext_resource type="Script" uid="uid://dx8wu3220owvg" path="res://scripts/puzzle-minigame/puzzleMain.gd" id="1_ctskp"]
+[ext_resource type="Texture2D" uid="uid://dn804fa4x6rkd" path="res://assets/Aze-pieces/row-1-column-1.jpg" id="1_ibph6"]
+[ext_resource type="Script" uid="uid://bkh068tm2vaye" path="res://scripts/puzzle-minigame/container.gd" id="2_324gm"]
+[ext_resource type="Script" uid="uid://dscylkm72xb03" path="res://scripts/puzzle-minigame/puzzlePieces.gd" id="2_ctskp"]
+[ext_resource type="Texture2D" uid="uid://bdtvjw68nkshk" path="res://assets/Aze-pieces/row-1-column-2.jpg" id="3_324gm"]
+[ext_resource type="Texture2D" uid="uid://cp12o68u66ioa" path="res://assets/Aze-pieces/row-1-column-3.jpg" id="4_gh5ul"]
+[ext_resource type="Texture2D" uid="uid://ddb0rxdwcfi1s" path="res://assets/Aze-pieces/row-2-column-1.jpg" id="5_fkwx2"]
+[ext_resource type="Texture2D" uid="uid://r3e8ehitmyte" path="res://assets/Aze-pieces/row-2-column-2.jpg" id="6_vb58l"]
+[ext_resource type="Texture2D" uid="uid://c2ebjavh72m47" path="res://assets/Aze-pieces/row-2-column-3.jpg" id="7_ximmq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctskp"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="GDScript" id="GDScript_ctskp"]
+script/source = "extends Area2D
+
+var dragging := false
+var dragOffset := Vector2.ZERO
+
+func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				dragging = true
+				# Store the offset between mouse position and piece position for smooth dragging
+				dragOffset = global_position - get_global_mouse_position()
+				get_viewport().set_input_as_handled()
+			else:
+				dragging = false
+
+func _process(delta):
+	if dragging:
+		global_position = get_global_mouse_position() + dragOffset
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64ty3"]
+size = Vector2(128, 192)
+
+[node name="Puzzle" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 20.0
+script = ExtResource("1_ctskp")
+
+[node name="Container" type="Node2D" parent="."]
+script = ExtResource("2_324gm")
+
+[node name="PuzzlePiece1" type="PanelContainer" parent="Container"]
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ctskp")
+script = ExtResource("2_ctskp")
+
+[node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece1"]
+layout_mode = 2
+texture = ExtResource("1_ibph6")
+expand_mode = 1
+
+[node name="PuzzlePiece2" type="PanelContainer" parent="Container"]
+offset_left = 200.0
+offset_right = 400.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ctskp")
+script = ExtResource("2_ctskp")
+
+[node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece2"]
+layout_mode = 2
+texture = ExtResource("3_324gm")
+expand_mode = 1
+
+[node name="PuzzlePiece3" type="PanelContainer" parent="Container"]
+offset_left = 400.0
+offset_right = 600.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ctskp")
+script = ExtResource("2_ctskp")
+
+[node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece3"]
+layout_mode = 2
+texture = ExtResource("4_gh5ul")
+expand_mode = 1
+
+[node name="PuzzlePiece4" type="PanelContainer" parent="Container"]
+offset_top = 200.0
+offset_right = 200.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ctskp")
+script = ExtResource("2_ctskp")
+
+[node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece4"]
+layout_mode = 2
+texture = ExtResource("5_fkwx2")
+expand_mode = 1
+
+[node name="PuzzlePiece5" type="PanelContainer" parent="Container"]
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ctskp")
+script = ExtResource("2_ctskp")
+
+[node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece5"]
+layout_mode = 2
+texture = ExtResource("6_vb58l")
+expand_mode = 1
+
+[node name="PuzzlePiece6" type="PanelContainer" parent="Container"]
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 600.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ctskp")
+script = ExtResource("2_ctskp")
+
+[node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece6"]
+layout_mode = 2
+texture = ExtResource("7_ximmq")
+expand_mode = 1
+
+[node name="PuzzlePieces" type="Node2D" parent="."]
+visible = false
+
+[node name="Piece1" type="Area2D" parent="PuzzlePieces"]
+texture_filter = 1
+position = Vector2(160, 88)
+script = SubResource("GDScript_ctskp")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece1"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ibph6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece1"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_64ty3")
+
+[node name="Piece2" type="Area2D" parent="PuzzlePieces"]
+position = Vector2(224, 88)
+script = SubResource("GDScript_ctskp")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece2"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_324gm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece2"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_64ty3")
+
+[node name="Piece3" type="Area2D" parent="PuzzlePieces"]
+position = Vector2(288, 88)
+script = SubResource("GDScript_ctskp")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_gh5ul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece3"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_64ty3")
+
+[node name="Piece4" type="Area2D" parent="PuzzlePieces"]
+position = Vector2(160, 184)
+script = SubResource("GDScript_ctskp")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece4"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_fkwx2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece4"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_64ty3")
+
+[node name="Piece5" type="Area2D" parent="PuzzlePieces"]
+position = Vector2(224, 184)
+script = SubResource("GDScript_ctskp")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece5"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_vb58l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece5"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_64ty3")
+
+[node name="Piece6" type="Area2D" parent="PuzzlePieces"]
+position = Vector2(288, 184)
+script = SubResource("GDScript_ctskp")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece6"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ximmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece6"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_64ty3")
