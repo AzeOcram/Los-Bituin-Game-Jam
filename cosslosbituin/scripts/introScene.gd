@@ -1,5 +1,6 @@
 extends Control
 
+
 #Variables
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var rich_text_label_1: RichTextLabel = $RichTextLabel1

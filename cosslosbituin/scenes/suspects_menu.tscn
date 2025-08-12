@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce4xsu0lspmnp"]
+
+[ext_resource type="Script" uid="uid://d0v7kgdyf5st1" path="res://scripts/suspects_menu.gd" id="1_davxd"]
+[ext_resource type="Texture2D" uid="uid://chx1tvd7ll0sd" path="res://assets/suspects.png" id="2_h35sw"]
+[ext_resource type="Texture2D" uid="uid://dtrh8lghqwy53" path="res://assets/exitButton.png" id="2_uk6y7"]
+[ext_resource type="FontFile" uid="uid://c73ox7sltsg8u" path="res://assets/SkemaProDisplay-Medium.ttf" id="3_hpirc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbo5y"]
+bg_color = Color(0.709804, 0.607843, 0.486275, 1)
+
+[node name="Suspects Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 88.0
+offset_right = 912.0
+offset_bottom = 552.0
+script = ExtResource("1_davxd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 672.0
+offset_bottom = 464.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nbo5y")
+
+[node name="SuspectButton1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 112.0
+offset_right = 230.0
+offset_bottom = 262.0
+texture_normal = ExtResource("2_h35sw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SuspectButton1"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 160.0
+offset_right = 120.0
+offset_bottom = 208.0
+theme_override_fonts/normal_font = ExtResource("3_hpirc")
+text = "ROJAN
+(Teacher)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SuspectButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 112.0
+offset_right = 414.0
+offset_bottom = 282.0
+texture_normal = ExtResource("2_h35sw")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SuspectButton2"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 160.0
+offset_right = 128.0
+offset_bottom = 208.0
+theme_override_fonts/normal_font = ExtResource("3_hpirc")
+text = "ZACH
+(Artist)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SuspectButton3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 112.0
+offset_right = 590.0
+offset_bottom = 262.0
+texture_normal = ExtResource("2_h35sw")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="SuspectButton3"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 160.0
+offset_right = 160.0
+offset_bottom = 216.0
+theme_override_fonts/normal_font = ExtResource("3_hpirc")
+text = "DEYNIEL
+(Gallery Owner)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 648.0
+offset_top = -8.0
+offset_right = 680.0
+offset_bottom = 24.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Exit"]
+position = Vector2(16, 16)
+scale = Vector2(0.494846, 0.5)
+texture = ExtResource("2_uk6y7")
+
+[connection signal="pressed" from="SuspectButton1" to="." method="_on_suspect_button_1_pressed"]
+[connection signal="pressed" from="SuspectButton2" to="." method="_on_suspect_button_2_pressed"]
+[connection signal="pressed" from="SuspectButton3" to="." method="_on_suspect_button_3_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

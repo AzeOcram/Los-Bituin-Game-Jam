@@ -1,0 +1,103 @@
+~ start
+Lawrence: Three people were connected to him: his old art teacher, a rival artist, and a gallery owner. You know the drill — talk to them, squeeze what you can, and find out who’s lying.
+=> END
+
+~ Rojan
+Rojan: He was an excellent student… such a shame he’s gone. I always tell him that talent is nothing without discipline
+=> rojanchoices
+
+~ rojanchoices
+if "brush" in GlobalArray.inventory and "footprints" in GlobalArray.inventory:
+	You:
+	- Is this paintbrush yours?
+		Rojan: That must’ve been from the victim. He broke it out of frustration. I find it hard to teach him well. He is stubborn and he knew  that, but he never listened. I pushed him to work harder, and maybe… maybe I pushed too far.
+		You: Your fingerprints were found on it
+		Rojan:  Ah yes, I remember. This… this is mine. I gave it to him last month. I knew that boy was stubborn, he couldn’t even make valuable art. How about you detective? Do you like art?
+		You: ... before.. yes => rojanchoices
+	- Your footprints are found at the crime scene
+		Rojan: I was his neighbor, alright? It’s only natural that my footprints ended up on his door, I checked in on him regularly. => rojanchoices
+	- Where were you at the time of the crime? 
+		Rojan: I was just marking assignments at home => rojanchoices
+	- Leave => END
+elif "brush" in GlobalArray.inventory:
+	You:
+	- Is this paintbrush yours?
+		Rojan: That must’ve been from the victim. He broke it out of frustration. I find it hard to teach him well. He is stubborn and he knew  that, but he never listened. I pushed him to work harder, and maybe… maybe I pushed too far.
+		You: Your fingerprints were found on it
+		Rojan:  Ah yes, I remember. This… this is mine. I gave it to him last month. I knew that boy was stubborn, he couldn’t even make valuable art. How about you detective? Do you like art?
+		You: ... before.. yes => rojanchoices
+	- Where were you at the time of the crime? 
+		Rojan: I was just marking assignments at home => rojanchoices
+	- Leave => END
+elif "footprints" in GlobalArray.inventory:
+	You:
+	- Your footprints are found at the crime scene
+		Rojan: I was his neighbor, alright? It’s only natural that my footprints ended up on his door, I checked in on him regularly. => rojanchoices
+	- Where were you at the time of the crime? 
+		Rojan: I was just marking assignments at home => rojanchoices
+	- Leave => END
+else:
+	You: 
+	- Where were you at the time of the crime? 
+		Rojan: I was just marking assignments at home => rojanchoices
+	- Leave => END
+
+~ Zach
+Zach: We were both in the same exhibition last year. We were good friends. Doing art all the time. In the last exhibition, he sold three pieces, I sold five.
+=> zachChoices
+
+~ zachChoices
+if "puzzle" in GlobalArray.inventory and "painting" in GlobalArray.inventory:
+	You: 
+	- Care to explain this letter?
+		Zach: You think that’s my handwriting? No, we were good friends.
+		You: The handwriting analysis matches yours. [i]Weird that this letter feels familiar[/i].
+		Zach: Okay! That’s all you’re getting from me. You’re just some nosy detective poking around where you don’t belong. You want the truth!? I can’t stand him. He was never some great artist, just a fraud putting on an act, driving me mad every single time. No talent. None at all. He is always competing with me
+		=> zachChoices
+	- Do you know about this painting?
+		Zach: Pfft, that portrait? That’s his work. It’s hardly a masterpiece… but I suppose you would keep something like that if you thought it had value.
+		You: [i]This portrait looks familiar. I just can’t remember where I’ve seen it.[/i]
+		=> zachChoices
+	- Where were you at the time of the crime? 
+		Zach: Out at the bar celebrating my new piece being accepted into a gallery. => zachChoices
+	- Leave => END
+elif "puzzle" in GlobalArray.inventory:
+	You: 
+	- Care to explain this letter?
+		Zach: You think that’s my handwriting? No, we were good friends.
+		You: The handwriting analysis matches yours. [i]Weird that this letter feels familiar[/i].
+		Zach: Okay! That’s all you’re getting from me. You’re just some nosy detective poking around where you don’t belong. You want the truth!? I can’t stand him. He was never some great artist, just a fraud putting on an act, driving me mad every single time. No talent. None at all. He is always competing with me
+		=> zachChoices
+	- Where were you at the time of the crime? 
+		Zach: Out at the bar celebrating my new piece being accepted into a gallery. => zachChoices
+	- Leave => END
+elif "painting" in GlobalArray.inventory:
+	- Do you know about this painting?
+		Zach: Pfft, that portrait? That’s his work. It’s hardly a masterpiece… but I suppose you would keep something like that if you thought it had value.
+		You: [i]This portrait looks familiar. I just can’t remember where I’ve seen it.[/i] => zachChoices
+	- Where were you at the time of the crime? 
+		Zach: Out at the bar celebrating my new piece being accepted into a gallery. => zachChoices
+	- Leave => END
+else:
+	- Where were you at the time of the crime? 
+		Zach: Out at the bar celebrating my new piece being accepted into a gallery. => zachChoices
+	- Leave => END
+
+~ Deyniel
+Deyniel: Yes he is my employee. He owed me two paintings and six months’ rent on his studio. No work, no pay.
+=> deynielChoices
+
+~ deynielChoices
+if "email" in GlobalArray.inventory:
+	You: 
+	- What can you say about this email?
+		Deyniel: He was never meant to be part of the art world. My gallery showcases state-of-the-art masterpieces, and his work doesn’t even come close to measuring up.
+		You: [i]hmmm.. that line hits dirrent[/i] => deynielChoices
+	- Where were you at the time of the crime? 
+		Zach: Hosting a late-night event at the gallery. => deynielChoices
+	- Leave => END
+
+You: 
+- Where were you at the time of the crime? 
+	Zach: Hosting a late-night event at the gallery. => deynielChoices
+- Leave => END

@@ -4,3 +4,15 @@ You: Any sign of forced entry?
 Lawrence (Partner): [speed=0.8]None. The door was locked from the inside… but the place looks like a hurricane tore through it.
 You: [i] Alright... let’s take a look. [/i]
 => END
+
+~ noInteractions
+You: Nothing to interact here.
+=> END
+
+~ Puzzle
+You: There is a torn paper here in the trash
+=> END
+
+~ PuzzleEnd
+You: [speed=0.7][i]"You stole my spotlight"[/i]. Whoever sent this has a grudge on the victim. Probably a rival?
+=> END

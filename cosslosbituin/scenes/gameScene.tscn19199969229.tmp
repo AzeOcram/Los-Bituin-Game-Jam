@@ -1,14 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://csnoki48f70jq"]
+[gd_scene load_steps=11 format=3 uid="uid://csnoki48f70jq"]
 
 [ext_resource type="Script" uid="uid://b60oto2nfygbd" path="res://scripts/game-scene-scripts/gameLoop.gd" id="1_ijoxr"]
 [ext_resource type="PackedScene" uid="uid://cmdaubklcmmg3" path="res://characters/player.tscn" id="2_0smmp"]
-[ext_resource type="PackedScene" uid="uid://qu268xsa7mi3" path="res://scenes/minigames.tscn" id="3_ldpgw"]
+[ext_resource type="PackedScene" uid="uid://sq2wqdg287go" path="res://scenes/puzzle.tscn" id="3_4doxw"]
 [ext_resource type="FontFile" uid="uid://c73ox7sltsg8u" path="res://assets/SkemaProDisplay-Medium.ttf" id="4_0smmp"]
 [ext_resource type="Script" uid="uid://c8qadh3xh4sjq" path="res://scripts/game-scene-scripts/timer_ui.gd" id="5_4doxw"]
 [ext_resource type="Texture2D" uid="uid://6lx7ueld3xax" path="res://icon.svg" id="6_5a1sk"]
 [ext_resource type="Script" uid="uid://d3pmwqowyp6ku" path="res://scripts/clues.gd" id="6_ldpgw"]
-[ext_resource type="PackedScene" uid="uid://ce4xsu0lspmnp" path="res://scenes/suspects_menu.tscn" id="8_gi2u3"]
-[ext_resource type="Texture2D" uid="uid://bsaj2moikex0e" path="res://assets/suspectsButton.png" id="9_5rda0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4doxw"]
 size = Vector2(32, 1152)
@@ -29,7 +27,16 @@ color = Color(0.16445, 0.0792645, 0.0220295, 1)
 [node name="player" parent="." instance=ExtResource("2_0smmp")]
 position = Vector2(560, 344)
 
-[node name="Minigames" parent="." instance=ExtResource("3_ldpgw")]
+[node name="Minigames" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Puzzle" parent="Minigames" instance=ExtResource("3_4doxw")]
+visible = false
+offset_left = 256.0
+offset_top = 104.0
+offset_right = 256.0
+offset_bottom = 124.0
 
 [node name="Timer UI" type="Label" parent="."]
 offset_left = 72.0
@@ -82,15 +89,3 @@ shape = SubResource("RectangleShape2D_ldpgw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Puzzle"]
 shape = SubResource("RectangleShape2D_gi2u3")
-
-[node name="Suspects Menu" parent="." instance=ExtResource("8_gi2u3")]
-visible = false
-
-[node name="TextureButton" type="TextureButton" parent="."]
-offset_left = 1032.0
-offset_top = 40.0
-offset_right = 1114.0
-offset_bottom = 127.0
-texture_normal = ExtResource("9_5rda0")
-
-[connection signal="pressed" from="TextureButton" to="Suspects Menu" method="_on_texture_button_pressed"]
