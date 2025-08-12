@@ -1,0 +1,180 @@
+[gd_scene load_steps=9 format=3 uid="uid://cydwsnnnjmwno"]
+
+[ext_resource type="Script" uid="uid://on2l2y80eh5d" path="res://scripts/introScene.gd" id="1_fqpck"]
+[ext_resource type="FontFile" uid="uid://c73ox7sltsg8u" path="res://assets/SkemaProDisplay-Medium.ttf" id="2_x3ncd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vva3n"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_fqpck"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel1:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel2:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vva3n"]
+resource_name = "textAnim1"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel1:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_x3ncd"]
+resource_name = "textAnim2"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2glrg"]
+resource_name = "fadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3ncd"]
+_data = {
+&"RESET": SubResource("Animation_fqpck"),
+&"fadeOut": SubResource("Animation_2glrg"),
+&"textAnim1": SubResource("Animation_vva3n"),
+&"textAnim2": SubResource("Animation_x3ncd")
+}
+
+[node name="introScene" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1168.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vva3n")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 640.0
+script = ExtResource("1_fqpck")
+
+[node name="RichTextLabel1" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 368.0
+offset_right = 1016.0
+offset_bottom = 528.0
+theme_override_fonts/normal_font = ExtResource("2_x3ncd")
+theme_override_font_sizes/normal_font_size = 35
+text = "Some things don’t fade…"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 432.0
+offset_right = 1072.0
+offset_bottom = 592.0
+theme_override_fonts/normal_font = ExtResource("2_x3ncd")
+theme_override_font_sizes/normal_font_size = 35
+text = "No matter how far you run."
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_x3ncd")
+}
+
+[node name="FinalText" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_top = 232.0
+offset_right = 1160.0
+offset_bottom = 408.0
+theme_override_fonts/normal_font = ExtResource("2_x3ncd")
+theme_override_font_sizes/normal_font_size = 35
+text = "Another day, Another case"
+horizontal_alignment = 1
+vertical_alignment = 1
