@@ -1,13 +1,15 @@
 extends Control
 
+#Variables
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var rich_text_label_1: RichTextLabel = $RichTextLabel1
 @onready var rich_text_label_2: RichTextLabel = $RichTextLabel2
 @onready var final_text: RichTextLabel = $FinalText
 
-var texts1 = {"Some things don’t fade…": Vector2(72, 72), 
-		"It waits in the corner of your mind…": Vector2(176, 216),
-		"And when you turn away long enough…": Vector2(264, 368)}
+#Shows what texts to play
+var texts1 = {"Some things don’t fade...": Vector2(72, 72), 
+		"It waits in the corner of your mind...": Vector2(176, 216),
+		"And when you turn away long enough...": Vector2(264, 368)}
 var texts2 = {"No matter how far you run.": Vector2(128, 144), 
 		"Quiet, but heavy.": Vector2(224, 288),
 		"You find it’s gone.": Vector2(320, 432)}
@@ -45,9 +47,11 @@ func _ready() -> void:
 		animation_player.play("fadeOut")
 		await animation_player.animation_finished
 		
+	#Final Text
 	await get_tree().create_timer(1).timeout
 	final_text.visible = true
 	await get_tree().create_timer(2).timeout
 	final_text.visible = false
-		
+	# Now switch to the game
+	get_tree().change_scene_to_file("res://scenes/gameScene.tscn")
 		

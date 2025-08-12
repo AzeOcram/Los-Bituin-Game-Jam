@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://csnoki48f70jq"]
+[gd_scene load_steps=7 format=3 uid="uid://csnoki48f70jq"]
 
-[ext_resource type="Script" uid="uid://b60oto2nfygbd" path="res://scripts/mainScript.gd" id="1_ijoxr"]
+[ext_resource type="Script" uid="uid://b60oto2nfygbd" path="res://scripts/game-scene-scripts/gameLoop.gd" id="1_ijoxr"]
 [ext_resource type="PackedScene" uid="uid://cmdaubklcmmg3" path="res://characters/player.tscn" id="2_0smmp"]
 [ext_resource type="PackedScene" uid="uid://sq2wqdg287go" path="res://scenes/puzzle.tscn" id="3_4doxw"]
+[ext_resource type="FontFile" uid="uid://c73ox7sltsg8u" path="res://assets/SkemaProDisplay-Medium.ttf" id="4_0smmp"]
+[ext_resource type="Script" uid="uid://c8qadh3xh4sjq" path="res://scripts/game-scene-scripts/timer_ui.gd" id="5_4doxw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4doxw"]
+size = Vector2(32, 1152)
 
 [node name="gameScene" type="Node2D"]
 script = ExtResource("1_ijoxr")
@@ -13,7 +18,7 @@ offset_bottom = 632.0
 color = Color(0.16445, 0.0792645, 0.0220295, 1)
 
 [node name="player" parent="." instance=ExtResource("2_0smmp")]
-position = Vector2(464, 280)
+position = Vector2(560, 344)
 
 [node name="Minigames" type="Control" parent="."]
 visible = false
@@ -25,3 +30,38 @@ offset_left = 256.0
 offset_top = 104.0
 offset_right = 256.0
 offset_bottom = 124.0
+
+[node name="Timer UI" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 172.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("4_0smmp")
+theme_override_font_sizes/font_size = 50
+text = "1PM"
+script = ExtResource("5_4doxw")
+
+[node name="Timer" type="Timer" parent="Timer UI"]
+wait_time = 120.0
+autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-8, 317.5)
+shape = SubResource("RectangleShape2D_4doxw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, -8)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_4doxw")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(568, 640)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_4doxw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1160, 321.25)
+shape = SubResource("RectangleShape2D_4doxw")
