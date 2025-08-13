@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cue3kni2n3se0"]
+
+[ext_resource type="Script" uid="uid://dqnihlf04ov5o" path="res://scripts/footprints.gd" id="1_fvvu4"]
+[ext_resource type="Texture2D" uid="uid://bb8v3m0ykfbh0" path="res://assets/footprint-1 (1).png" id="2_6pgvp"]
+
+[node name="Footprints" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_fvvu4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(600, 304)
+scale = Vector2(0.66, 0.708)
+texture = ExtResource("2_6pgvp")

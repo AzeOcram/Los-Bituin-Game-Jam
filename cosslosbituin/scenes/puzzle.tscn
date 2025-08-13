@@ -1,14 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://sq2wqdg287go"]
+[gd_scene load_steps=19 format=3 uid="uid://sq2wqdg287go"]
 
 [ext_resource type="Script" uid="uid://dx8wu3220owvg" path="res://scripts/puzzle-minigame/puzzleMain.gd" id="1_ctskp"]
-[ext_resource type="Texture2D" uid="uid://dn804fa4x6rkd" path="res://assets/Aze-pieces/row-1-column-1.jpg" id="1_ibph6"]
 [ext_resource type="Script" uid="uid://bkh068tm2vaye" path="res://scripts/puzzle-minigame/container.gd" id="2_324gm"]
 [ext_resource type="Script" uid="uid://dscylkm72xb03" path="res://scripts/puzzle-minigame/puzzlePieces.gd" id="2_ctskp"]
-[ext_resource type="Texture2D" uid="uid://bdtvjw68nkshk" path="res://assets/Aze-pieces/row-1-column-2.jpg" id="3_324gm"]
-[ext_resource type="Texture2D" uid="uid://cp12o68u66ioa" path="res://assets/Aze-pieces/row-1-column-3.jpg" id="4_gh5ul"]
-[ext_resource type="Texture2D" uid="uid://ddb0rxdwcfi1s" path="res://assets/Aze-pieces/row-2-column-1.jpg" id="5_fkwx2"]
-[ext_resource type="Texture2D" uid="uid://r3e8ehitmyte" path="res://assets/Aze-pieces/row-2-column-2.jpg" id="6_vb58l"]
-[ext_resource type="Texture2D" uid="uid://c2ebjavh72m47" path="res://assets/Aze-pieces/row-2-column-3.jpg" id="7_ximmq"]
+[ext_resource type="Texture2D" uid="uid://4rwwv3kve58e" path="res://assets/pieces/row-1-column-1.png" id="4_324gm"]
+[ext_resource type="Texture2D" uid="uid://dy2ce4cpj42wo" path="res://assets/pieces/row-1-column-2.png" id="5_gh5ul"]
+[ext_resource type="Texture2D" uid="uid://bl302t8x2wonc" path="res://assets/pieces/row-1-column-3.png" id="6_fkwx2"]
+[ext_resource type="Texture2D" uid="uid://dtgb5kxl037ds" path="res://assets/pieces/row-2-column-1.png" id="7_vb58l"]
+[ext_resource type="Texture2D" uid="uid://bn02b8e78gt7i" path="res://assets/pieces/row-2-column-2.png" id="8_ximmq"]
+[ext_resource type="Texture2D" uid="uid://bj75of11gap5c" path="res://assets/pieces/row-2-column-3.png" id="9_iq1vr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctskp"]
 bg_color = Color(0.188235, 0.188235, 0.188235, 1)
@@ -40,8 +40,20 @@ func _process(delta):
 		global_position = get_global_mouse_position() + dragOffset
 "
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vbmd7"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64ty3"]
 size = Vector2(128, 192)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gvggv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pwq5m"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x0pqu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6eecm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dk34r"]
 
 [node name="Puzzle" type="Control"]
 layout_mode = 3
@@ -60,7 +72,7 @@ script = ExtResource("2_ctskp")
 
 [node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece1"]
 layout_mode = 2
-texture = ExtResource("1_ibph6")
+texture = ExtResource("4_324gm")
 expand_mode = 1
 
 [node name="PuzzlePiece2" type="PanelContainer" parent="Container"]
@@ -72,7 +84,7 @@ script = ExtResource("2_ctskp")
 
 [node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece2"]
 layout_mode = 2
-texture = ExtResource("3_324gm")
+texture = ExtResource("5_gh5ul")
 expand_mode = 1
 
 [node name="PuzzlePiece3" type="PanelContainer" parent="Container"]
@@ -84,7 +96,7 @@ script = ExtResource("2_ctskp")
 
 [node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece3"]
 layout_mode = 2
-texture = ExtResource("4_gh5ul")
+texture = ExtResource("6_fkwx2")
 expand_mode = 1
 
 [node name="PuzzlePiece4" type="PanelContainer" parent="Container"]
@@ -96,7 +108,7 @@ script = ExtResource("2_ctskp")
 
 [node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece4"]
 layout_mode = 2
-texture = ExtResource("5_fkwx2")
+texture = ExtResource("7_vb58l")
 expand_mode = 1
 
 [node name="PuzzlePiece5" type="PanelContainer" parent="Container"]
@@ -109,7 +121,7 @@ script = ExtResource("2_ctskp")
 
 [node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece5"]
 layout_mode = 2
-texture = ExtResource("6_vb58l")
+texture = ExtResource("8_ximmq")
 expand_mode = 1
 
 [node name="PuzzlePiece6" type="PanelContainer" parent="Container"]
@@ -122,7 +134,7 @@ script = ExtResource("2_ctskp")
 
 [node name="TextureRect" type="TextureRect" parent="Container/PuzzlePiece6"]
 layout_mode = 2
-texture = ExtResource("7_ximmq")
+texture = ExtResource("9_iq1vr")
 expand_mode = 1
 
 [node name="PuzzlePieces" type="Node2D" parent="."]
@@ -135,7 +147,7 @@ script = SubResource("GDScript_ctskp")
 
 [node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece1"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_ibph6")
+texture = SubResource("CompressedTexture2D_vbmd7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece1"]
 scale = Vector2(0.5, 0.5)
@@ -147,7 +159,7 @@ script = SubResource("GDScript_ctskp")
 
 [node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece2"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_324gm")
+texture = SubResource("CompressedTexture2D_gvggv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece2"]
 scale = Vector2(0.5, 0.5)
@@ -159,7 +171,7 @@ script = SubResource("GDScript_ctskp")
 
 [node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece3"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_gh5ul")
+texture = SubResource("CompressedTexture2D_pwq5m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece3"]
 scale = Vector2(0.5, 0.5)
@@ -171,7 +183,7 @@ script = SubResource("GDScript_ctskp")
 
 [node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece4"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_fkwx2")
+texture = SubResource("CompressedTexture2D_x0pqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece4"]
 scale = Vector2(0.5, 0.5)
@@ -183,7 +195,7 @@ script = SubResource("GDScript_ctskp")
 
 [node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece5"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_vb58l")
+texture = SubResource("CompressedTexture2D_6eecm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece5"]
 scale = Vector2(0.5, 0.5)
@@ -195,7 +207,7 @@ script = SubResource("GDScript_ctskp")
 
 [node name="Sprite2D" type="Sprite2D" parent="PuzzlePieces/Piece6"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_ximmq")
+texture = SubResource("CompressedTexture2D_dk34r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieces/Piece6"]
 scale = Vector2(0.5, 0.5)

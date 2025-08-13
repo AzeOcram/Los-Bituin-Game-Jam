@@ -1,26 +1,35 @@
 extends StaticBody2D
 const MAIN = preload("res://dialogues/main.dialogue")
 
-
 func interact():
-	var endDialogueName = str(name) + "End"
-	print("You interacted with:", name)
-	print(endDialogueName)
-	#get the minigames parent node
+	var end_dialogue_name = str(name) + "End"
+	print("[DEBUG] You interacted with:", name)
+
 	var minigames = get_node("/root/gameScene/Minigames")
-	
-	#hide all minigames
+
+	# Hide all minigames
 	for child in minigames.get_children():
 		child.visible = false
-	
-	#Select which minigame to show
-	var node_path = NodePath(name)
-	if minigames.has_node(node_path):
-		if minigames.get_node(node_path).completed:
-			DialogueManager.show_dialogue_balloon(MAIN, endDialogueName)
+
+	# Check if the minigame exists
+	if minigames.has_node(str(name)):
+		var mg = minigames.get_node(str(name))
+
+		if mg.completed:
+			DialogueManager.show_dialogue_balloon(MAIN, end_dialogue_name)
+			await DialogueManager.dialogue_ended
 			return
+
+		# Play start dialogue
 		DialogueManager.show_dialogue_balloon(MAIN, name)
 		await DialogueManager.dialogue_ended
-		minigames.get_node(node_path).visible = true
+
+		mg.visible = true
+
+		# Call the minigame's completion method
+		if mg.has_method("mark_completed"):
+			mg.mark_completed()
+		else:
+			print("[DEBUG] Minigame has no 'mark_completed' method:", name)
 	else:
-		print("Minigame '%s' not found!" % name)
+		print("[DEBUG] Minigame '%s' not found!" % name)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://chmr4pocobah3"]
+
+[ext_resource type="Script" uid="uid://cp7fsradfhi44" path="res://scripts/email.gd" id="1_dwfkx"]
+[ext_resource type="Texture2D" uid="uid://ket7fexd8ghc" path="res://assets/computer email.png" id="2_85euw"]
+
+[node name="Email" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_dwfkx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 296)
+scale = Vector2(4.365, 4.3125)
+texture = ExtResource("2_85euw")

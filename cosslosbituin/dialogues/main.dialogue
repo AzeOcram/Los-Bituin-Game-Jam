@@ -16,3 +16,38 @@ You: There is a torn paper here in the trash
 ~ PuzzleEnd
 You: [speed=0.7][i]"You stole my spotlight"[/i]. Whoever sent this has a grudge on the victim. Probably a rival?
 => END
+
+~ Brush
+You: A brush and a painting can be seen here
+=> END
+
+~ BrushEnd
+You: [speed=0.7]Looks like this paintbrush has fingerprints left
+=> END
+
+~ Footprints
+You: I wonder whose footprints are these
+=> END
+
+~ FootprintsEnd
+You: I think these matched with Rojan's
+=> END
+
+~ Email
+You: Luckily it was open
+=> END
+
+~ EmailEnd
+You: Hmmm... Let me see! [i]"Please don't fire me"[/i] sent to Deyniel
+=> END
+
+
+~ NearEnd
+Lawrence: So?? Detective? Have you already found out who the killer is?
+jdab1!@#@!: [shake rate=20 level=10] It was you!! [/shake]
+mgrora_+#21: [shake rate=20 level=10]You're Useless[/shake]
+$!da)!@3: [shake rate=20 level=20] You cannot be an artist [/shake]
+sdhag310231: [shake rate=20 level=30] Youu killed meee!!!! [/shake]
+xxxxxx: [shake rate=20 level=50] I hate youu!!! [/shake]
+JQ21kt: [shake rate=20 level=70] It was you!! [/shake]
+j3LI4ANM: [shake rate=20 level=100] JULIAANNNNNNNNN!!!!! [/shake]

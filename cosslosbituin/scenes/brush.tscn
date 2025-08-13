@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://blb7t0xowos26"]
+
+[ext_resource type="Script" uid="uid://b2k4im1eymije" path="res://scripts/brush.gd" id="1_mqrhx"]
+[ext_resource type="Texture2D" uid="uid://2mxx2744wmwv" path="res://assets/paintbrush-fingerprint.png" id="2_pgixs"]
+
+[node name="Brush" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1096.0
+offset_bottom = 600.0
+script = ExtResource("1_mqrhx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(600, 304)
+scale = Vector2(0.836, 0.724)
+texture = ExtResource("2_pgixs")

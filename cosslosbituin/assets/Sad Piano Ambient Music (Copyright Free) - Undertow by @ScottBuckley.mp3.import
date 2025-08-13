@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxmgxwwognw1k"
+path="res://.godot/imported/Sad Piano Ambient Music (Copyright Free) - Undertow by @ScottBuckley.mp3-1eef21a55403c8d9309b951f6c5d8c1e.mp3str"
+
+[deps]
+
+source_file="res://assets/Sad Piano Ambient Music (Copyright Free) - Undertow by @ScottBuckley.mp3"
+dest_files=["res://.godot/imported/Sad Piano Ambient Music (Copyright Free) - Undertow by @ScottBuckley.mp3-1eef21a55403c8d9309b951f6c5d8c1e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://qu268xsa7mi3"]
+[gd_scene load_steps=5 format=3 uid="uid://qu268xsa7mi3"]
 
 [ext_resource type="PackedScene" uid="uid://sq2wqdg287go" path="res://scenes/puzzle.tscn" id="2_h6msd"]
+[ext_resource type="PackedScene" uid="uid://chmr4pocobah3" path="res://scenes/email.tscn" id="2_w7mfh"]
+[ext_resource type="PackedScene" uid="uid://blb7t0xowos26" path="res://scenes/brush.tscn" id="3_7meb8"]
+[ext_resource type="PackedScene" uid="uid://cue3kni2n3se0" path="res://scenes/footprints.tscn" id="4_xakh2"]
 
 [node name="Minigames" type="Control"]
 layout_mode = 3
@@ -13,7 +16,9 @@ offset_top = 104.0
 offset_right = 256.0
 offset_bottom = 124.0
 
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Email" parent="." instance=ExtResource("2_w7mfh")]
+visible = false
+
+[node name="Brush" parent="." instance=ExtResource("3_7meb8")]
+
+[node name="Footprints" parent="." instance=ExtResource("4_xakh2")]

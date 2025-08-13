@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://yl616c7exgwp"]
+
+[ext_resource type="AudioStream" uid="uid://dxmgxwwognw1k" path="res://assets/Sad Piano Ambient Music (Copyright Free) - Undertow by @ScottBuckley.mp3" id="1_gkd1q"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_gkd1q")
+volume_db = 2.5
+autoplay = true
+parameters/looping = true

@@ -6,12 +6,12 @@ const MAIN = preload("res://dialogues/main.dialogue")
 
 
 var correctPath = {
-	"PuzzlePiece1": "res://assets/Aze-pieces/row-1-column-1.jpg",
-	"PuzzlePiece2": "res://assets/Aze-pieces/row-1-column-2.jpg",
-	"PuzzlePiece3": "res://assets/Aze-pieces/row-1-column-3.jpg",
-	"PuzzlePiece4": "res://assets/Aze-pieces/row-2-column-1.jpg",
-	"PuzzlePiece5": "res://assets/Aze-pieces/row-2-column-2.jpg",
-	"PuzzlePiece6": "res://assets/Aze-pieces/row-2-column-3.jpg"
+	"PuzzlePiece1": "res://assets/pieces/row-1-column-1.png",
+	"PuzzlePiece2": "res://assets/pieces/row-1-column-2.png",
+	"PuzzlePiece3": "res://assets/pieces/row-1-column-3.png",
+	"PuzzlePiece4": "res://assets/pieces/row-2-column-1.png",
+	"PuzzlePiece5": "res://assets/pieces/row-2-column-2.png",
+	"PuzzlePiece6": "res://assets/pieces/row-2-column-3.png"
 }
 
 var completed := false
@@ -54,3 +54,10 @@ func enlarge_pieces():
 	GlobalArray.inventory.append("puzzle")
 	print(GlobalArray.inventory)
 	player.unlock_controls()
+	
+	if GlobalArray.inventory.size() >= 4:
+		player.lock_controls()
+		await get_tree().create_timer(1.0).timeout
+		DialogueManager.show_dialogue_balloon(MAIN, "NearEnd")
+		await DialogueManager.dialogue_ended
+		get_tree().change_scene_to_file("res://scenes/ending.tscn")
